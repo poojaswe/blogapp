@@ -12,13 +12,16 @@ export default function AddBlog() {
     async function handleSaveBlogToDatabase() {
         try {
             const response = isEdit
-                ? await axios.put(`http://localhost:5000/api/blogs/update/${location.state.getCurrentBlogItem.id}`, {
+                ? await axios.put(
+                    `http://localhost:5000/api/blogs/update/${location.state.getCurrentBlogItem._id}`,
+                    {
+                        title: formData.title,
+                        description: formData.description,
+                    }
+                )
+                : await axios.post("http://localhost:5000/api/blogs/add", {
                     title: formData.title,
                     description: formData.description,
-                })
-                : await axios.post('http://localhost:5000/api/blogs/add', {
-                    title: formData.title,
-                    description: formData.description
                 });
             const result = await response.data;
             if (result) {
