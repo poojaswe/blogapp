@@ -65,7 +65,7 @@ export default function Blogs() {
                             <div key={blogItem._id}>
                                 <p>{blogItem.title}</p>
                                 <p>{blogItem.description}</p>
-                                <span className="classes.icons">
+                                <span className={classes.icons}>
                                     <FaEdit onClick={() => handleEditBlog(blogItem)} size={30} />
                                     <FaTrash onClick={() => handleDeleteBlog(blogItem._id)} size={30} />
                                 </span>
