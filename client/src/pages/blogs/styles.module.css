@@ -1,14 +1,31 @@
-.wrapper{
-    padding: 30px;
+.wrapper {
+    padding: 30px; 
 }
 
-.blogList{
+.blogList {
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap:10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-height: 60vh; 
+    overflow-y: auto;
 }
 
-.blogList div{
+@media screen and (max-width: 768px) {
+    .blogList {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.blogList div {
     padding: 10px;
     border: 1px solid green;
+    background: #9CC532;
+    color: rgb(32, 35, 32);
+    margin: 0;
+}
+
+.icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
