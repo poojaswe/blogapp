@@ -17,7 +17,7 @@ export default function Blogs() {
 
             if (result && result.blogList && result.blogList.length) {
                 setBlogList(result.blogList);
-            }else{
+            } else {
                 setBlogList([]);
             }
         } catch (error) {
@@ -47,8 +47,8 @@ export default function Blogs() {
     }
 
 
-    async function handleEditBlog(getCurrentBlogItem) { 
-        navigate("/add-blog",{state:{getCurrentBlogItem}});
+    async function handleEditBlog(getCurrentBlogItem) {
+        navigate("/add-blog", { state: { getCurrentBlogItem } });
     }
 
     useEffect(() => {
@@ -59,10 +59,10 @@ export default function Blogs() {
         <div className={classess.wrapper}>
             <h1>Blog List</h1>
             {pending ? <h1>Loading...</h1> :
-                <div>
+                <div className={classess.blogList}>
                     {blogList && blogList.length
                         ? blogList.map((blogItem) => (
-                            <div key={blogItem._id} className={classess.blogList}>
+                            <div key={blogItem._id}>
                                 <p>{blogItem.title}</p>
                                 <p>{blogItem.description}</p>
                                 <FaEdit onClick={() => handleEditBlog(blogItem)} size={30} />
