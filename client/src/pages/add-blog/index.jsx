@@ -1,11 +1,13 @@
-import { useContext, useEffect } from 'react';
-import classess from './styles.module.css';
-import { GlobalContext } from '../../context';
-import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useContext, useEffect } from "react";
+import classess from "./styles.module.css";
+import { GlobalContext } from "../../context";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function AddBlog() {
-    const { formData, setFormData, isEdit, setIsEdit } = useContext(GlobalContext);
+    const { formData, setFormData, isEdit, setIsEdit } = useContext(
+        GlobalContext
+    );
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -27,13 +29,13 @@ export default function AddBlog() {
             if (result) {
                 setIsEdit(false);
                 setFormData({
-                    title: '',
-                    description: ''
-                })
+                    title: "",
+                    description: "",
+                });
                 navigate("/");
             }
         } catch (error) {
-            alert('Error while adding blog:', error);
+            alert("Error while adding blog:", error);
         }
     }
 
@@ -43,42 +45,42 @@ export default function AddBlog() {
             setIsEdit(true);
             setFormData({
                 title: getCurrentBlogItem.title,
-                description: getCurrentBlogItem.description
-            })
+                description: getCurrentBlogItem.description,
+            });
         }
-    }, [location])
+    }, [location]);
 
     return (
         <div className={classess.wrapper}>
-            <h1>{isEdit ? 'Edit a Blog' : 'Add a Blog'}</h1>
+            <h1>{isEdit ? "Edit a Blog" : "Add a Blog"}</h1>
             <div className={classess.formWrappper}>
                 <input
-                    type='text'
-                    placeholder='Enter Blog Title'
-                    name='title'
-                    id='title'
+                    type="text"
+                    placeholder="Enter Blog Title"
+                    name="title"
+                    id="title"
                     value={formData.title}
                     onChange={(e) =>
                         setFormData({
                             ...formData,
-                            title: e.target.value
+                            title: e.target.value,
                         })
                     }
                 />
                 <textarea
-                    placeholder='Enter Blog Description'
-                    name='description'
-                    id='description'
+                    placeholder="Enter Blog Description"
+                    name="description"
+                    id="description"
                     value={formData.description}
                     onChange={(e) =>
                         setFormData({
                             ...formData,
-                            description: e.target.value
+                            description: e.target.value,
                         })
                     }
                 />
                 <button onClick={handleSaveBlogToDatabase}>
-                    {isEdit ? 'Edit' : 'Add'}
+                    {isEdit ? "Edit" : "Add"}
                 </button>
             </div>
         </div>
