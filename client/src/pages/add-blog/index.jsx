@@ -12,30 +12,34 @@ export default function AddBlog() {
     const location = useLocation();
 
     async function handleSaveBlogToDatabase() {
-        try {
-            const response = isEdit
-                ? await axios.put(
-                    `http://localhost:5000/api/blogs/update/${location.state.getCurrentBlogItem._id}`,
-                    {
+        if (formData.title === "" || formData.description === "") {
+            alert("Please enter a title and description for the blog");
+        } else {
+            try {
+                const response = isEdit
+                    ? await axios.put(
+                        `http://localhost:5000/api/blogs/update/${location.state.getCurrentBlogItem._id}`,
+                        {
+                            title: formData.title,
+                            description: formData.description,
+                        }
+                    )
+                    : await axios.post("http://localhost:5000/api/blogs/add", {
                         title: formData.title,
                         description: formData.description,
-                    }
-                )
-                : await axios.post("http://localhost:5000/api/blogs/add", {
-                    title: formData.title,
-                    description: formData.description,
-                });
-            const result = await response.data;
-            if (result) {
-                setIsEdit(false);
-                setFormData({
-                    title: "",
-                    description: "",
-                });
-                navigate("/");
+                    });
+                const result = await response.data;
+                if (result) {
+                    setIsEdit(false);
+                    setFormData({
+                        title: "",
+                        description: "",
+                    });
+                    navigate("/");
+                }
+            } catch (error) {
+                alert("Error while adding blog:", error);
             }
-        } catch (error) {
-            alert("Error while adding blog:", error);
         }
     }
 
