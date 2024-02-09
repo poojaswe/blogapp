@@ -63,7 +63,7 @@ export default function Blogs() {
                     {blogList && blogList.length
                         ? blogList.map((blogItem) => (
                             <div key={blogItem._id}>
-                                <p>{blogItem.title}</p>
+                                <p><strong>Title: </strong>{blogItem.title}</p>
                                 <p>{blogItem.description}</p>
                                 <span className={classess.icons}>
                                     <FaEdit onClick={() => handleEditBlog(blogItem)} size={30} />
