@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/header';
 import Blogs from './pages/blogs';
-import AddBlog from './pages/add-blog';
+import AddBlog from './pages/blogsmodify';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Blogs/>}/>
-        <Route exact path="/add-blog" element={<AddBlog/>}/>
+        <Route exact path="/blogsmodify" element={<AddBlog/>}/>
       </Routes>
     </div>
   );

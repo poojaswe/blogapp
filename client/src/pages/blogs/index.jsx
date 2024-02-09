@@ -48,7 +48,7 @@ export default function Blogs() {
 
 
     async function handleEditBlog(getCurrentBlogItem) {
-        navigate("/add-blog", { state: { getCurrentBlogItem } });
+        navigate("/blogsmodify", { state: { getCurrentBlogItem } });
     }
 
     useEffect(() => {
@@ -65,8 +65,10 @@ export default function Blogs() {
                             <div key={blogItem._id}>
                                 <p>{blogItem.title}</p>
                                 <p>{blogItem.description}</p>
-                                <FaEdit onClick={() => handleEditBlog(blogItem)} size={30} />
-                                <FaTrash onClick={() => handleDeleteBlog(blogItem._id)} size={30} />
+                                <span className="classes.icons">
+                                    <FaEdit onClick={() => handleEditBlog(blogItem)} size={30} />
+                                    <FaTrash onClick={() => handleDeleteBlog(blogItem._id)} size={30} />
+                                </span>
                             </div>
                         ))
                         : <h3>No Blogs Added!</h3>
