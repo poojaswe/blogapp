@@ -48,7 +48,7 @@ export default function AddBlog() {
                 description: getCurrentBlogItem.description,
             });
         }
-    }, [location]);
+    }, [location.state, setIsEdit, setFormData]);
 
     return (
         <div className={classess.wrapper}>
