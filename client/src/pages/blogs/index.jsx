@@ -57,7 +57,7 @@ export default function Blogs() {
 
     return (
         <div className={classess.wrapper}>
-            <h1>Blog List</h1>
+            <h1>Blogs</h1>
             {pending ? <h1>Loading...</h1> :
                 <div className={classess.blogList}>
                     {blogList && blogList.length
